@@ -7,21 +7,27 @@ import { NavigationContainer } from "@react-navigation/native";
 const Drawer = createDrawerNavigator();
 
 function Home () {
+  return (
   <View>
     <Text>Home</Text>
   </View>
+  );
 }
 
 function MyItineraries () {
+  return (
   <View style={styles.container}>
     <Text style={styles.text}>My Itineraries</Text>
   </View>
+  );
 }
 
 function ExploreItineraries () {
+  return(
   <View style={styles.container}>
     <Text>Explore Itineraries</Text>
   </View>
+  );
 }
 
 
