@@ -38,7 +38,7 @@ const MyItineraries = () => {
   ]);
 
   const renderAppointmentCard = ({ item }) => (
-    <View style={[styles.card, { backgroundColor: "black", borderTopWidth:4, borderTopColor: "grey"}]}>
+    <View style={[styles.card, { backgroundColor: "black", }]}>
       <Text style={[styles.cardTitle, { color: "orange" }]}>{item.title}</Text>
       <View style={styles.cardDates}>
         <Text style={styles.cardDate}>Short Optional description here</Text>

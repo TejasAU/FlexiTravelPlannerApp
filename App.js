@@ -8,6 +8,7 @@ import ExploreItineraries from './components/Itineraries/exploreItineraries/Expl
 import Home from './components/home/Home';
 import Signup from './components/login/Signup';
 import Login from './components/login/Login';
+import Timelines from './components/Itineraries/myItineraries/Timelines';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,6 +45,16 @@ function MyTabs() {
         component={MyItineraries}
         options={{
           tabBarLabel: 'My Itineraries',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="schedule" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Timeline"
+        component={Timelines}
+        options={{
+          tabBarLabel: 'Timeline',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="schedule" color={color} size={size} />
           ),
