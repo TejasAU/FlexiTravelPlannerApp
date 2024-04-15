@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     textTransform : "uppercase",
     textAlign: "center",
     paddingVertical : 40,
-    color : "red"
+    color : "blue"
   },
   inputView : {
     gap : 15,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   input : {
     height : 50,
     paddingHorizontal : 20,
-    borderColor : "red",
+    borderColor : "orange",
     borderWidth : 1,
     borderRadius: 7
   },
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     color : "red"
   },
   button : {
-    backgroundColor : "red",
+    backgroundColor : "orange",
     height : 45,
     borderColor : "gray",
     borderWidth  : 1,
