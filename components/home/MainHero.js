@@ -22,8 +22,8 @@ const MainHero = () => {
             resizeMode="cover"
         >
             <View style={styles.overlay}>
-                <Text style={styles.text}>Unlock Your</Text>
-                <Text style={styles.text}>Perfect Journey</Text> 
+                <Text style={styles.text}>Unlock Your Perfect Journey</Text>
+                <Text style={styles.subText}>Plan, Pack, Preserve, and Prosper on Your Adventures</Text> 
             </View>
         </ImageBackground>
     );
@@ -42,9 +42,14 @@ const styles = StyleSheet.create({
     },
     text: {
         color: "white",
-        fontSize: 24,
+        fontSize: 25,
         fontWeight: "bold",
     },
+    subText: {
+        color: "white",
+        fontSize: 12,
+        // fontWeight: "bold",
+    }
 });
 
 export default MainHero;
