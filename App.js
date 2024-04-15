@@ -21,7 +21,7 @@ function MyTabs() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="WayFinder"
         component={Home}
         options={{
           tabBarLabel: 'Home',
