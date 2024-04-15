@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign, MaterialIcons } from '@expo/vector-icons';
 import MyItineraries from './components/Itineraries/myItineraries/MyItineraries';
 import ExploreItineraries from './components/Itineraries/exploreItineraries/ExploreItineraries';
 import Home from './components/home/Home';
+import Signup from './components/login/Signup';
+import Login from './components/login/Login';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +35,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Explore Itineraries',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={size} />
+            <MaterialIcons name="travel-explore" color={color} size={size} />
           ),
         }}
       />
@@ -43,10 +45,30 @@ function MyTabs() {
         options={{
           tabBarLabel: 'My Itineraries',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialIcons name="schedule" color={color} size={size} />
           ),
         }}
       />
+      <Tab.Screen
+        name="Login"
+        component={Login}
+        options={{
+          tabBarLabel: 'Login',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="login" color={color} size={size} />
+          ),
+        }}
+        />
+      <Tab.Screen
+        name="Sign Up"
+        component={Signup}
+        options={{
+          tabBarLabel: 'Signup',
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="adduser" color={color} size={size} />
+          ),
+        }}
+        />
     </Tab.Navigator>
   );
 }
