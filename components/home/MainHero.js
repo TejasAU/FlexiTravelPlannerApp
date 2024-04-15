@@ -22,8 +22,8 @@ const MainHero = () => {
             resizeMode="cover"
         >
             <View style={styles.overlay}>
-                <Text style={styles.text}>Your Text Here</Text>
-                <Text style={styles.text}>Your Text Here</Text> 
+                <Text style={styles.text}>Unlock Your</Text>
+                <Text style={styles.text}>Perfect Journey</Text> 
             </View>
         </ImageBackground>
     );
