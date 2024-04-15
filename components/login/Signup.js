@@ -4,7 +4,7 @@ import { Alert, Button, Image, Pressable, SafeAreaView, StyleSheet, Switch, Text
 
 export default function LoginForm() {
     const [click,setClick] = useState(false);
-    const {username,setUsername}=  useState("");
+    const {email,setEmail}=  useState("");
     const {password,setPassword}=  useState("");
     const {phoneNum ,setPhoneNum}= useState("");
     const {fname,setFname}=useState("");
@@ -15,11 +15,11 @@ export default function LoginForm() {
         {/* <Image source={logo} style={styles.image} resizeMode='contain' /> */}
         <Text style={styles.title}>Signup</Text>
         <View style={styles.inputView}>
-            <TextInput style={styles.input} placeholder='FIRST NAME' value={username} onChangeText={setUsername} autoCorrect={false}
+            <TextInput style={styles.input} placeholder='FIRST NAME' value={fname} onChangeText={setFname} autoCorrect={false}
         autoCapitalize='none' />
-            <TextInput style={styles.input} placeholder='LAST NAME' value={username} onChangeText={setUsername} autoCorrect={false}
+            <TextInput style={styles.input} placeholder='LAST NAME' value={lname} onChangeText={setLname} autoCorrect={false}
         autoCapitalize='none' />
-            <TextInput style={styles.input} placeholder='EMAIL' value={username} onChangeText={setUsername} autoCorrect={false}
+            <TextInput style={styles.input} placeholder='EMAIL' value={email} onChangeText={setEmail} autoCorrect={false}
         autoCapitalize='none' />
             <TextInput style={styles.input} placeholder='PHONE NO.' secureTextEntry value={phoneNum} onChangeText={setPassword} autoCorrect={false}
         autoCapitalize='none'/>
