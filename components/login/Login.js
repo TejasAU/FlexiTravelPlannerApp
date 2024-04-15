@@ -1,58 +1,6 @@
-// import React, { useState } from 'react';
-// import { View, Text, TextInput, Button } from 'react-native';
-// import axios from 'axios';
-
-// const Login = () => {
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const handleLogin = async () => {
-//     try {
-//       const response = await axios.post('http://localhost:3000/login', {
-//         email,
-//         password,
-//       });
-
-//       if (response.data.message === 'Login successful.') {
-//         alert('Login successful!');
-//       } else {
-//         alert('Invalid credentials. Please try again.');
-//       }
-//     } catch (error) {
-//       console.error(error);
-//       alert('Invalid credentials. Please try again.');
-//     }
-//   };
-
-//   return (
-//     <View>
-//       <TextInput
-//         placeholder="Email"
-//         value={email}
-//         onChangeText={(text) => setEmail(text)}
-//       />
-//       <TextInput
-//         placeholder="Password"
-//         value={password}
-//         onChangeText={(text) => setPassword(text)}
-//         secureTextEntry
-//       />
-//       <Button title="Login" onPress={handleLogin} />
-//     </View>
-//   );
-// };
-
-// export default Login;
 import React, { useState } from 'react'
 import { Alert, Button, Image, Pressable, SafeAreaView, StyleSheet, Switch, Text, TextInput, View } from 'react-native'
-// const logo = require("../../assets/logo.png")
-// const facebook = require("../../assets/facebook.png")
-// const linkedin = require("../../assets/linkedin.png")
-// const tiktok = require("../../assets/tiktok.png")
 
-// contact me :)
-// instagram: must_ait6
-// email : mustapha.aitigunaoun@gmail.com
 
 export default function LoginForm() {
     const [click,setClick] = useState(false);
@@ -87,12 +35,7 @@ export default function LoginForm() {
             </Pressable>
             {/* <Text style={styles.optionsText}>OR LOGIN WITH</Text> */}
         </View>
-{/*         
-        <View style={styles.mediaIcons}>
-                <Image source={facebook} style={styles.icons}   />
-                <Image source={tiktok} style={styles.icons}  />
-                <Image source={linkedin} style={styles.icons}  />
-        </View> */}
+
 
         <Text style={styles.footerText}>Don't Have Account?<Text style={styles.signup}>  Sign Up</Text></Text>
 
