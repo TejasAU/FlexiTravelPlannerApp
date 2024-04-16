@@ -1,16 +1,57 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { useState, useEffect } from "react";
+
 
 const MyItineraries = () => {
-    const itineraries = [
-        { id: 1, title: "Itinerary 1", description: "Description of Itinerary 1" },
-        { id: 2, title: "Itinerary 2", description: "Description of Itinerary 2" },
-        { id: 3, title: "Itinerary 3", description: "Description of Itinerary 3" },
-        { id: 4, title: "Itinerary 4", description: "Description of Itinerary 4" },
-        { id: 5, title: "Itinerary 5", description: "Description of Itinerary 5" },
-        { id: 6, title: "Itinerary 6", description: "Description of Itinerary 6" },
-        // Add more itineraries as needed
-    ];
+    const [itineraries, setItineraries] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchItineraries = async () => {
+            try {
+                const response = await fetch("http://localhost:3001/api/itinerary/getAllItinerary");
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log(data);
+                setItineraries(data);
+            } catch (error) {
+                console.error("Error fetching itineraries:", error);
+                setError('Error fetching itineraries');
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchItineraries();
+    }, []);
+
+    // const fetchItineraries = async () => {
+    //     try {
+    //         const response = await fetch("http://localhost:3001/api/itinerary/getAllItinerary");
+    //         if (!response.ok) {
+    //             throw new Error('Network response was not ok');
+    //         }
+    //         const data = await response.json();
+    //         console.log(data);
+    //         setItineraries(data);
+    //     } catch (error) {
+    //         console.error("Error fetching itineraries:", error);
+    //         setError('Error fetching itineraries');
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+
+    if (isLoading) {
+        return <Text>Loading...</Text>; // Or show a loading indicator
+    }
+
+    if (error) {
+        return <Text>{error}</Text>; // Or show an error message
+    }
 
     return (
         <View style={styles.container}>
@@ -20,15 +61,18 @@ const MyItineraries = () => {
             <Text style={styles.text}>My Itineraries</Text>
             <View style={styles.cardContainer}>
                 {itineraries.map(itinerary => (
-                    <TouchableOpacity key={itinerary.id} style={styles.card}>
-                        <Text style={[styles.cardTitle, { color: "white" }]}>{itinerary.title}</Text>
-                        <Text style={[styles.cardDescription, { color: "white" }]}>{itinerary.description}</Text>
+                    <TouchableOpacity key={itinerary._id} style={styles.card}>
+                        <Text style={[styles.cardTitle, { color: "white" }]}>Explore {itinerary.cityName}</Text>
+                        <Text style={[styles.cardDescription, { color: "white" }]}>{itinerary.desc}</Text>
                     </TouchableOpacity>
                 ))}
             </View>
         </View>
     );
 };
+
+// Your styles...
+
 
 const styles = StyleSheet.create({
     container: {
