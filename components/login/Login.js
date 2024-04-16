@@ -30,7 +30,7 @@ export default function LoginForm() {
         </View>
 
         <View style={styles.buttonView}>
-            <Pressable style={styles.button} onPress={() => Alert.alert("Login Successfuly!","see you in my instagram if you have questions : must_ait6")}>
+            <Pressable style={styles.button} onPress={() => Alert.alert("Login Successfuly!")}>
                 <Text style={styles.buttonText}>LOGIN</Text>
             </Pressable>
             {/* <Text style={styles.optionsText}>OR LOGIN WITH</Text> */}
