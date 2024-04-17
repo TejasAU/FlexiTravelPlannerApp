@@ -16,11 +16,26 @@ import { useUser } from "../../contexts/UserContext";
 export default function LoginForm() {
     const [click, setClick] = useState(false);
     const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
     const [password, setPassword] = useState("");
     const navigation = useNavigation();
     const { setUserExists } = useUser();
     const handleSignUp = () => {
         navigation.navigate("Sign Up");
+    };
+    const isEmailValid = (email) => {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(email);
+    };
+    const handleEmailChange = (e) => {
+        const temp = e;
+        setEmail(temp);
+
+        if (!isEmailValid(temp)) {
+            setError("Invalid email format.");
+        } else {
+            setError("");
+        }
     };
 
     const handleLogin = async () => {
@@ -69,10 +84,11 @@ export default function LoginForm() {
                     placeholder="EMAIL"
                     value={email}
                     keyboardType="email-address"
-                    onChangeText={setEmail}
+                    onChangeText={handleEmailChange}
                     autoCorrect={false}
                     autoCapitalize="none"
                 />
+                {error && <Text style={styles.textError}>{error}</Text>}
                 <TextInput
                     style={styles.input}
                     placeholder="PASSWORD"
@@ -206,9 +222,14 @@ const styles = StyleSheet.create({
     footerText: {
         textAlign: "center",
         color: "gray",
+        marginTop: 20,
     },
     signup: {
         color: "red",
-        fontSize: 13,
+        fontSize: 20,
+    },
+    textError: {
+        color: "red",
+        
     },
 });

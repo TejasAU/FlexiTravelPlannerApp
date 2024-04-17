@@ -18,6 +18,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function LoginForm() {
     const [click, setClick] = useState(false);
     const [ email, setEmail ] = useState("");
+    const [error, setError] = useState("");
     const [ password, setPassword ] = useState("");
     const [ fName, setFname ] = useState("");
     const [ lName, setLname ] = useState("");
@@ -26,6 +27,21 @@ export default function LoginForm() {
 
     const handleLogin = () => {
         navigation.navigate("Login");
+    };
+
+    const isEmailValid = (email) => {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(email);
+    };
+    const handleEmailChange = (e) => {
+        const temp = e;
+        setEmail(temp);
+
+        if (!isEmailValid(temp)) {
+            setError("Invalid email format.");
+        } else {
+            setError("");
+        }
     };
 
     const handleSignup = async () => {
@@ -88,10 +104,11 @@ export default function LoginForm() {
                     style={styles.input}
                     placeholder="EMAIL"
                     value={email}
-                    onChangeText={setEmail}
+                    onChangeText={handleEmailChange}
                     autoCorrect={false}
                     autoCapitalize="none"
                 />
+                {error && <Text style={styles.textError}>{error}</Text>}
                 <TextInput
                     style={styles.input}
                     placeholder="PASSWORD"
@@ -207,9 +224,13 @@ const styles = StyleSheet.create({
     footerText: {
         textAlign: "center",
         color: "gray",
+        marginTop: 20,
     },
     signup: {
         color: "red",
-        fontSize: 13,
+        fontSize: 20,
+    },
+    textError: {
+        color: "red", 
     },
 });
