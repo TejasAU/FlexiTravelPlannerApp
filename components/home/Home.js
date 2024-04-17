@@ -29,6 +29,7 @@ const Home = () => {
                     <MainHero />
                     {homeData.map((section, index) => (
                         <SubHero
+                            key={index}
                             alignment={index % 2 === 0 ? "left" : "right"}
                             heading={section.heading}
                             desc={section.desc}
