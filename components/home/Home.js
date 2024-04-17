@@ -3,7 +3,6 @@ import {
     View,
     ScrollView,
     StyleSheet,
-    useWindowDimensions,
 } from "react-native";
 import SubHero from "./SubHero"; // Assuming the Hero component is in a file named Hero.js
 import MainHero from "./MainHero";

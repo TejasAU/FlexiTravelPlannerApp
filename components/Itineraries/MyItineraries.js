@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
     View,
     Text,
-    TextInput,
-    FlatList,
-    Image,
     TouchableOpacity,
     StyleSheet,
     ScrollView,
@@ -13,7 +10,6 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const MyItineraries = () => {
-    const [searchQuery, setSearchQuery] = useState("");
     const [user, setUser] = useState(null);
     const [userItineraries, setUserItineraries] = useState([]);
 
