@@ -1,9 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    ScrollView,
+} from "react-native";
 import { useState, useEffect } from "react";
 
-
-const MyItineraries = () => {
+const ExploreItineraries = () => {
     const [itineraries, setItineraries] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -11,39 +16,27 @@ const MyItineraries = () => {
     useEffect(() => {
         const fetchItineraries = async () => {
             try {
-                const response = await fetch("http://localhost:3001/api/itinerary/getAllItinerary");
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                const response = await fetch(
+                    "http://flexitravelplannerbackend.onrender.com/api/itinerary/getAllItinerariesWithStats",
+                    {
+                        method: "GET",
+                        headers: { "Content-Type": "application/json" },
+                    }
+                );
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    setItineraries(data);
                 }
-                const data = await response.json();
-                console.log(data);
-                setItineraries(data);
             } catch (error) {
                 console.error("Error fetching itineraries:", error);
-                setError('Error fetching itineraries');
+                setError("Error fetching itineraries");
             } finally {
                 setIsLoading(false);
             }
         };
         fetchItineraries();
     }, []);
-
-    // const fetchItineraries = async () => {
-    //     try {
-    //         const response = await fetch("http://localhost:3001/api/itinerary/getAllItinerary");
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         const data = await response.json();
-    //         console.log(data);
-    //         setItineraries(data);
-    //     } catch (error) {
-    //         console.error("Error fetching itineraries:", error);
-    //         setError('Error fetching itineraries');
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
 
     if (isLoading) {
         return <Text>Loading...</Text>; // Or show a loading indicator
@@ -54,31 +47,43 @@ const MyItineraries = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container} style={{ flex: 1 }}>
             <Text style={styles.introText}>
                 Explore curated itineraries which may suit your taste!
             </Text>
-            <Text style={styles.text}>My Itineraries</Text>
             <View style={styles.cardContainer}>
-                {itineraries.map(itinerary => (
+                {itineraries.map((itinerary) => (
                     <TouchableOpacity key={itinerary._id} style={styles.card}>
-                        <Text style={[styles.cardTitle, { color: "white" }]}>Explore {itinerary.cityName}</Text>
-                        <Text style={[styles.cardDescription, { color: "white" }]}>{itinerary.desc}</Text>
+                        <Text style={[styles.cardTitle, { color: "white" }]}>
+                            Explore {itinerary.cityName}
+                        </Text>
+                        <Text
+                            style={[styles.cardDescription, { color: "white" }]}
+                        >
+                            {itinerary.desc}
+                        </Text>
+                        <Text
+                            style={[styles.cardDescription, { color: "white" }]}
+                        >
+                            Duration of trip: {itinerary.durationOfTrip}
+                        </Text>
+                        <Text
+                            style={[styles.cardDescription, { color: "white" }]}
+                        >
+                            Number of places added:{" "}
+                            {itinerary.numberOfPlacesAdded}
+                        </Text>
                     </TouchableOpacity>
                 ))}
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
 // Your styles...
 
-
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: "orange",
         paddingVertical: 20,
     },
@@ -89,12 +94,14 @@ const styles = StyleSheet.create({
         textAlign: "left",
         width: "90%",
         marginBottom: 10,
+        paddingLeft: 12
     },
     text: {
         fontSize: 24,
         fontWeight: "bold",
         marginBottom: 20,
         color: "white",
+        paddingLeft: 12
     },
     cardContainer: {
         flexDirection: "row",
@@ -120,4 +127,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MyItineraries;
+export default ExploreItineraries;
