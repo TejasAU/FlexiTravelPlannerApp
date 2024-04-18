@@ -1,11 +1,9 @@
-import React from "react";
 import {
     View,
     Text,
     ImageBackground,
     StyleSheet,
-    useWindowDimensions,
-    TouchableOpacity,
+    useWindowDimensions
 } from "react-native";
 
 const MainHero = () => {

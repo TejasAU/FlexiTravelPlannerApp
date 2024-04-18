@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
     View,
     Text,
@@ -36,7 +36,7 @@ const MyItineraries = () => {
                     }
                 }
             } catch (error) {
-                console.error("Error fetching user or itineraries:", error);
+                    console.error("Error fetching user or itineraries:", error);
             }
         };
 

@@ -1,5 +1,9 @@
-import React from "react";
-import { View, Text, StyleSheet, useWindowDimensions } from "react-native";
+import { 
+    View, 
+    Text, 
+    StyleSheet, 
+    useWindowDimensions 
+} from "react-native";
 
 const SubHero = ({ alignment, heading, desc }) => {
     const { height } = useWindowDimensions();

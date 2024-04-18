@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
     Alert,
-    Button,
-    Image,
     Pressable,
     SafeAreaView,
     StyleSheet,
-    Switch,
     Text,
     TextInput,
     View,
@@ -16,9 +13,8 @@ import { useUser } from "../../contexts/UserContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function LoginForm() {
-    const [click, setClick] = useState(false);
     const [ email, setEmail ] = useState("");
-    const [error, setError] = useState("");
+    const [ error, setError ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ fName, setFname ] = useState("");
     const [ lName, setLname ] = useState("");
