@@ -5,6 +5,7 @@ import {
     ImageBackground,
     StyleSheet,
     useWindowDimensions,
+    TouchableOpacity,
 } from "react-native";
 
 const MainHero = () => {
